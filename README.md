@@ -6,30 +6,30 @@ Simple solution to avoid using JSX with ReactJS and preserve readability
 JSX is a special formatting language used by ReactJS framework to improve readability.
 It can look like this:
 
-  render: function(){
-   
-      return <div>
-        <div class="clicker" onMouseDown={this.handleMouseDown}>
-          Give me the message!
-        </div>
-        <div class="message">Message conveyed
-          <span class="count">{this.state.count}</span> time(s)</div>
-      </div>
-      ;
-    }
+      render: function(){
+       
+          return <div>
+            <div class="clicker" onMouseDown={this.handleMouseDown}>
+              Give me the message!
+            </div>
+            <div class="message">Message conveyed
+              <span class="count">{this.state.count}</span> time(s)</div>
+          </div>
+          ;
+        }
   
 Mixing of HTML content with Javascript is great, but requires to have additional tools for processing that and converting into plain Javascript. The result will be:
 
 
-  render: function(){
-   
-      return React.DOM.div(null, 
-        React.DOM.div( {className:"clicker", onMouseDown:this.handleMouseDown}, 
-  " Give me the message! "      ),
-        React.DOM.div( {className:"message"}, "Message conveyed ",        React.DOM.span( {className:"count"}, this.state.count), " time(s)")
-      )
-      ;
-    }
+      render: function(){
+       
+          return React.DOM.div(null, 
+            React.DOM.div( {className:"clicker", onMouseDown:this.handleMouseDown}, 
+      " Give me the message! "      ),
+            React.DOM.div( {className:"message"}, "Message conveyed ",        React.DOM.span( {className:"count"}, this.state.count), " time(s)")
+          )
+          ;
+        }
 
 
 We could have written it in js from the beginning, but this version is much harder to read. Though, having it in plain js is good for working with TypeScript, and thus I created a simple routine to bridge the readability and nativeness.
