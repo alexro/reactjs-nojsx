@@ -1,7 +1,9 @@
 reactjs-nojsx
 =============
 
-Simple solution to avoid using JSX with ReactJS and preserve readability 
+Simple solution to avoid using JSX with ReactJS and preserve readability.
+
+jsfiddle: http://jsfiddle.net/t6BQL/
 
 JSX is a special formatting language used by ReactJS framework to improve readability.
 It can look like this:
