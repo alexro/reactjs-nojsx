@@ -36,51 +36,51 @@ We could have written it in js from the beginning, but this version is much hard
 
 Now we can buid the DOM like this:
 
- render: function () {
- 
-         var dom = [
-             {
-                 tag: React.DOM.div,
-                 props: { className: "commentBoxLabel" },
-                 content: "Hello, world! I am a CommentBoxLabel. " + this.state.data.value
-             },
-             {
-                 tag: React.DOM.span,
-                 props: { className: "commentBoxLabel" },
-                 dom: [
-                     {
-                         tag: React.DOM.span,
-                         props: { className: "commentBoxLabel" },
-                         content: "Hello, world! I am a CommentBoxLabel. " + this.state.data.value
-                     }
-                 ]
-             }
-         ];
- 
-         return parse(dom);
-     }
+             render: function () {
+             
+                     var dom = [
+                         {
+                             tag: React.DOM.div,
+                             props: { className: "commentBoxLabel" },
+                             content: "Hello, world! I am a CommentBoxLabel. " + this.state.data.value
+                         },
+                         {
+                             tag: React.DOM.span,
+                             props: { className: "commentBoxLabel" },
+                             dom: [
+                                 {
+                                     tag: React.DOM.span,
+                                     props: { className: "commentBoxLabel" },
+                                     content: "Hello, world! I am a CommentBoxLabel. " + this.state.data.value
+                                 }
+                             ]
+                         }
+                     ];
+             
+                     return parse(dom);
+                 }
      
 And the parse() function is that:
 
- function parse(dom, inner) {
- 
-     var items = [];
- 
-     for (var el in dom) {
- 
-         if (dom[el].dom) {
-             items.push(dom[el].tag(dom[el].props, parse(dom[el].dom, inner || true)));
-         } else {
-             items.push(dom[el].tag(dom[el].props, dom[el].content));
-         }
-     }
- 
-     if (inner) {
-         return items.length == 1 ? items[0] : items;
-     } else {
-         return items.length == 1 ? items[0] : React.DOM.section(null, items);
-     }
- }
+             function parse(dom, inner) {
+             
+                 var items = [];
+             
+                 for (var el in dom) {
+             
+                     if (dom[el].dom) {
+                         items.push(dom[el].tag(dom[el].props, parse(dom[el].dom, inner || true)));
+                     } else {
+                         items.push(dom[el].tag(dom[el].props, dom[el].content));
+                     }
+                 }
+             
+                 if (inner) {
+                     return items.length == 1 ? items[0] : items;
+                 } else {
+                     return items.length == 1 ? items[0] : React.DOM.section(null, items);
+                 }
+             }
 
 
 
