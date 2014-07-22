@@ -20,6 +20,7 @@ render: function(){
   
 Mixing of HTML content with Javascript is great, but requires to have additional tools for processing that and converting into plain Javascript. The result will be:
 
+<code>
 render: function(){
  
     return React.DOM.div(null, 
@@ -29,7 +30,8 @@ render: function(){
     )
     ;
   }
-  
+</code>
+
 We could have written it in js from the beginning, but this version is much harder to read. Though, having it in plain js is good for working with TypeScript, and thus I created a simple routine to bridge the readability and nativeness.
 
 Now we can buid the DOM like this:
